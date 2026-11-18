@@ -30,7 +30,7 @@ Open `app/index.html` in a browser, or use the published artifact.
 
 Content marked ⚑ comes from the textbook (OpenStax Biology 2e) or *Your Inner Fish*, not the uploaded slides. The Module 9 slides and the viruses half of Module 5 weren't available.
 
-### College startup opportunity research
+## College startup opportunity research
 
 An evidence-based assessment of **10 businesses two U.S. college students can start with $2,000–$4,000**, working 10–20 hours/week each. It covers cited market evidence, itemized startup budgets, three-scenario financial projections, launch plans, validation experiments, and a skeptical review of the recommendations.
 
