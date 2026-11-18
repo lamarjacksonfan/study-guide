@@ -109,6 +109,27 @@ const path = require('path');
   console.log('  exam results page:', res);
   if (!/results/.test(res)) errors.push('exam: no results page after submit');
 
+
+  // --- REVIEW GUIDE: sections render, all 71 items shown, TOC link scrolls, tick persists
+  await page.goto(file + '#guide'); await page.waitForTimeout(300);
+  const secs = await page.locator('section[id^="guide-"]').count();
+  const items = await page.locator('section[id^="guide-"] ul.rv > li').count();
+  console.log('  guide: ' + secs + ' sections, ' + items + ' review items shown');
+  if (secs !== 18) errors.push('guide: expected 18 sections, got ' + secs);
+  if (items !== 71) errors.push('guide: expected 71 review items, got ' + items);
+  await page.locator('summary', { hasText: 'why, and why not' }).first().click();
+  const reasons = await page.locator('details[open] li').first().innerText();
+  if (!/is (right|wrong)/.test(reasons)) errors.push('guide: MC option reasoning missing');
+  await page.goto(file + '#guide-g-lac'); await page.waitForTimeout(300);
+  const top = await page.evaluate(() => Math.round(document.getElementById('guide-g-lac').getBoundingClientRect().top));
+  console.log('  guide: deep link lands the lac section at top=' + top + 'px');
+  if (Math.abs(top) > 60) errors.push('guide: deep link did not scroll to the section (top=' + top + ')');
+  await page.locator('[data-gdone="g-lac"]').check(); await page.waitForTimeout(200);
+  await page.reload(); await page.waitForTimeout(300);
+  const stuck = await page.locator('[data-gdone="g-lac"]').isChecked();
+  console.log('  guide: tick survives reload:', stuck);
+  if (!stuck) errors.push('guide: progress tick did not persist');
+
   // --- FLASHCARD flip
   await page.goto(file + '#cards'); await page.waitForTimeout(250);
   await page.click('#fcard'); await page.waitForTimeout(300);

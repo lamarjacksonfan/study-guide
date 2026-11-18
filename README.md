@@ -20,6 +20,7 @@ Open `be3415/index.html` in a browser, or use the published artifact.
 | --- | --- |
 | `be3415/data-meta.js` | Modules, materials analysis, gaps, high-yield priorities, a 7-session plan, the cram packet and the readiness checklist |
 | `be3415/data-review.js` | All 71 review-sheet items with the answer key: 53 true statements, 9 multiple choice, 9 written problems, each linked to the topic that explains it |
+| `be3415/data-guide.js` | The review guide: 18 sections that explain the review sheet concept by concept, covering all 71 items once, with option-by-option reasoning for the 9 multiple-choice questions |
 | `be3415/data-topics-a/b/c.js` | 32 study topics across the nine modules |
 | `be3415/data-cards.js` | 273 flashcards, generated from the topics |
 | `be3415/data-q-practice.js` | 48 practice questions with per-option explanations, plus 53 held-out true/false items for the mock exams |

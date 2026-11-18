@@ -138,7 +138,7 @@ BE.topics.push(
 },
 {
   id: "phage", m: "m7", title: "M13 phage display & panning", heat: 3,
-  src: "Week 12 Lecture 2 slides 32–47; review statements 31, 50 and 51",
+  src: "Week 12 Lecture 2 slides 32–47; review statements 33, 50 and 51",
   why: "Three review statements plus sixteen slides, and the p3/p8 numbers are exactly the sort of detail that gets asked directly.",
   know: "<b>M13</b> is a filamentous bacteriophage carrying <b>ssDNA</b> (~6400 nucleotides). It is <b>non-lytic</b>: it reproduces without killing the E. coli host, only slowing its growth. Fusing a peptide library to a coat protein gene displays those peptides on the phage surface, linking <b>genotype inside</b> to <b>phenotype outside</b>.",
   eli5: "Imagine a billion job applicants, each wearing their skill on a badge and carrying their CV in their pocket. You test the badges against a task, keep whoever sticks, and then read the CVs of the winners to find out who they are. The badge is the displayed peptide; the CV is the DNA inside.",

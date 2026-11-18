@@ -177,7 +177,7 @@
   var views = {};
   var NAV = [
     ["home", "Dashboard"], ["map", "Exam map"], ["plan", "Study plan"], ["study", "Study"],
-    ["review", "Review sheet"], ["problems", "Problems"], ["cards", "Flashcards"],
+    ["review", "Review sheet"], ["guide", "Review guide"], ["problems", "Problems"], ["cards", "Flashcards"],
     ["practice", "Practice"], ["exams", "Exams"], ["weak", "Weak areas"], ["cram", "Cram packet"]
   ];
   function nav() {
@@ -188,13 +188,14 @@
   var current = "home";
   function route() {
     var h = (location.hash || "#home").slice(1);
-    var v = h.indexOf("topic-") === 0 ? "study" : h.indexOf("prob-") === 0 ? "problems" : h;
+    var v = h.indexOf("topic-") === 0 ? "study" : h.indexOf("prob-") === 0 ? "problems" : h.indexOf("guide-") === 0 ? "guide" : h;
     if (!views[v]) { v = "home"; h = "home"; }
     current = v;
     $$("#nav a").forEach(function (a) { a.classList.toggle("on", a.getAttribute("data-v") === v); });
     var main = $("#main");
     main.innerHTML = views[v](h);
-    window.scrollTo(0, 0);
+    var anchor = h.indexOf("guide-") === 0 ? document.getElementById(h) : null;
+    if (anchor) anchor.scrollIntoView(); else window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", route);
 
@@ -1278,6 +1279,79 @@
   document.addEventListener("change", function (ev) {
     if (ev.target.dataset && ev.target.dataset.final != null) {
       S.finalCheck[ev.target.dataset.final] = ev.target.checked; save();
+    }
+  });
+
+
+  /* ------------------------------------------------------ REVIEW GUIDE */
+  function guideItem(ref) {
+    var kind = ref[0], n = +ref.slice(1), r, topic;
+    if (kind === "t") {
+      r = BE.reviewTrue[n - 1];
+      return '<li><span class="num">Statement ' + n + "</span> " + esc(r[2]) + "</li>";
+    }
+    if (kind === "m") {
+      r = BE.reviewMC[n - 1];
+      var why = BE.guideMC["m" + n] || [];
+      return '<li><span class="num">Multiple choice ' + n + "</span> <b>" + esc(r[2]) + "</b>" +
+        '<ol class="rvopts">' + r[3].map(function (o, i) {
+          return '<li class="' + (i === r[4] ? "right" : "") + '">' + esc(o) + "</li>";
+        }).join("") + "</ol>" +
+        "<details><summary>Answer " + LETTERS[r[4]] + ": why, and why not the others</summary><ul>" +
+        why.map(function (w) { return "<li>" + w + "</li>"; }).join("") + "</ul></details></li>";
+    }
+    r = BE.reviewOther[n - 1];
+    return '<li><span class="num">Problem ' + n + "</span> <b>" + esc(r[3]) + "</b>" +
+      "<details><summary>Show the answer</summary><p class=\"ans\">" + esc(r[4]) + "</p><p>" +
+      esc(r[5]) + "</p>" + (r[2] ? '<p><a href="#prob-' + r[2] + '">Work the problem</a></p>' : "") +
+      "</details></li>";
+  }
+  views.guide = function () {
+    if (!S.guideDone) S.guideDone = {};
+    var done = BE.guide.filter(function (g) { return S.guideDone[g.id]; }).length;
+    return "<h1>Review guide</h1>" +
+      '<p class="lede">The professor’s review sheet, explained concept by concept. Each section says what ' +
+      "the idea is, shows the exact review items it covers with their answers, lists how the exam could " +
+      "twist them, and ends with questions to answer out loud. All 71 items appear once.</p>" +
+      '<div class="card"><p><b>' + done + " of " + BE.guide.length + "</b> sections ticked as explainable " +
+      'without notes.</p><span class="bar"><i style="width:' + Math.round(done / BE.guide.length * 100) +
+      '%"></i></span></div>' +
+      '<nav class="toc">' + BE.guide.map(function (g) {
+        return '<a href="#guide-' + g.id + '">' + (S.guideDone[g.id] ? "✔ " : "") + esc(g.title) + "</a>";
+      }).join("") + "</nav>" +
+      BE.guide.map(function (g) {
+        return '<section class="card" id="guide-' + g.id + '"><h2>' + esc(g.title) + "</h2>" +
+          '<p class="muted">Covers ' + g.items.length + " review item" + (g.items.length > 1 ? "s" : "") +
+          " · " + g.topics.map(function (t) { return topicLink(t); }).join(" · ") + "</p>" +
+          '<div class="tsec"><h3>The idea</h3>' + g.idea + "</div>" +
+          (g.table ? table(g.table.head, g.table.rows) : "") +
+          '<div class="callout hot"><b>Key points</b><ul>' +
+          g.points.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul></div>" +
+          '<div class="tsec"><h3>The review items</h3><ul class="rv">' + g.items.map(guideItem).join("") +
+          "</ul></div>" +
+          '<div class="callout trap"><b>How the exam could twist it</b><ul>' +
+          g.twists.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul></div>" +
+          '<div class="tsec recall"><h3>Test yourself (answer aloud first)</h3><ol>' +
+          g.test.map(function (q) {
+            return "<li>" + q[0] + "<details><summary>Show answer</summary><p>" + q[1] + "</p></details></li>";
+          }).join("") + "</ol></div>" +
+          '<label class="fcheck"><input type="checkbox" data-gdone="' + g.id + '"' +
+          (S.guideDone[g.id] ? " checked" : "") + "> I can explain this without notes</label></section>";
+      }).join("");
+  };
+  document.addEventListener("change", function (ev) {
+    var t = ev.target;
+    if (t.dataset && t.dataset.gdone) {
+      if (!S.guideDone) S.guideDone = {};
+      S.guideDone[t.dataset.gdone] = t.checked; save();
+    }
+  });
+  // in-page anchors like #guide-g-lac would normally leave the view, so scroll instead
+  window.addEventListener("hashchange", function () {
+    var h = location.hash.slice(1);
+    if (h.indexOf("guide-") === 0) {
+      var el = document.getElementById(h);
+      if (el) el.scrollIntoView();
     }
   });
 

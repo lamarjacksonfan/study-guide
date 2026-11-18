@@ -57,6 +57,21 @@ const P = new Set(BE.questions.filter(q => q.set === 'P').map(q => q.id));
 BE.questions.filter(q => q.set !== 'P').forEach(q =>
   bad(!P.has(q.id), q.id + ': exam question also in practice'));
 
+
+// review guide: every review item appears exactly once, links resolve, MC options all explained
+const want = [];
+for (let i = 1; i <= 53; i++) want.push('t' + i);
+for (let i = 1; i <= 9; i++) { want.push('m' + i); want.push('o' + i); }
+const cover = {};
+BE.guide.forEach(g => {
+  bad(g.items.length && g.idea && g.points.length && g.twists.length && g.test.length, g.id + ': section incomplete');
+  g.topics.forEach(t => bad(tids.has(t), g.id + ': bad topic ' + t));
+  g.items.forEach(r => { cover[r] = (cover[r] || 0) + 1; });
+});
+want.forEach(r => bad(cover[r] === 1, 'guide: item ' + r + ' covered ' + (cover[r] || 0) + ' times'));
+Object.keys(cover).forEach(r => bad(want.includes(r), 'guide: unknown item ' + r));
+for (let i = 1; i <= 9; i++) bad((BE.guideMC['m' + i] || []).length === 4, 'guide: m' + i + ' needs 4 option explanations');
+
 const counts = {}; BE.questions.forEach(q => counts[q.set] = (counts[q.set] || 0) + 1);
 console.log('topics', BE.topics.length, '| cards', BE.cards.length,
   '| questions', BE.questions.length, JSON.stringify(counts),

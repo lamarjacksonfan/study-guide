@@ -10,7 +10,7 @@ const path = require('path');
   await page.goto(file);
   await page.waitForTimeout(400);
 
-  const views = ['home','map','plan','study','review','problems','cards','practice','exams','weak','cram'];
+  const views = ['home','map','plan','study','review','guide','problems','cards','practice','exams','weak','cram'];
   for (const v of views) {
     await page.goto(file + '#' + v);
     await page.waitForTimeout(220);
