@@ -86,13 +86,14 @@ window.BE = window.BE || {};
 
   /* Circular plasmid map with the chosen sites marked. */
   BE.plasmidSVG = function (key, marks, feature) {
-    var pl = BE.plasmids[key], R = 92, cx = 150, cy = 118;
+    // Wide viewBox: site labels sit outside the ring and must not clip.
+    var pl = BE.plasmids[key], R = 78, cx = 220, cy = 124;
     var ang = function (bp) { return (bp / pl.size) * 2 * Math.PI - Math.PI / 2; };
     var pt = function (bp, r) {
       var a = ang(bp);
       return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
     };
-    var p = ['<svg viewBox="0 0 300 250" width="100%" role="img" class="mapsvg" aria-label="' +
+    var p = ['<svg viewBox="0 0 440 254" width="100%" role="img" class="mapsvg" aria-label="' +
       pl.name + ' map, ' + pl.size + ' base pairs">'];
     p.push('<circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" class="mapring"/>');
     if (feature) {
