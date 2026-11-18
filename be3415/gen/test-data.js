@@ -1,5 +1,5 @@
 // Integrity checks across every BE 3415 data file.
-const ctx = require(process.env.SP + '/gen/load.js'), BE = ctx.BE;
+const ctx = require(require('path').join(__dirname, 'load.js')), BE = ctx.BE;
 let fail = 0; const bad = (c, m) => { if (!c) { fail++; console.log('  FAIL:', m); } };
 
 const tids = new Set(BE.topics.map(t => t.id));

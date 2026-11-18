@@ -1,4 +1,4 @@
-const ctx = require(process.env.SP + '/gen/load.js');
+const ctx = require(require('path').join(__dirname, 'load.js'));
 const BE = ctx.BE;
 let fail = 0, n = 0;
 const ck = (c, m) => { n++; if (!c) { fail++; console.log('  FAIL:', m); } };

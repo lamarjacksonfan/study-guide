@@ -6,7 +6,7 @@ const path = require('path');
   const errors = [];
   page.on('console', m => { if (m.type() === 'error') errors.push('console: ' + m.text()); });
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
-  const file = 'file://' + path.resolve('be3415/index.html');
+  const file = 'file://' + path.join(__dirname, '..', 'index.html');
   await page.goto(file);
   await page.waitForTimeout(400);
 

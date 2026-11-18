@@ -8,7 +8,94 @@ This repository holds three separate projects:
 
 ## BE 3415 Exam 3 study system
 
-In progress.
+An interactive study app for **Exam 3** of Fundamentals of Biomolecular Engineering,
+built from six lectures (Weeks 10-13), the professor's *Review for Exam 3 with Answers*,
+and Labs 4-6.
+
+Open `be3415/index.html` in a browser, or use the published artifact.
+
+### What's inside
+
+| File | Contents |
+| --- | --- |
+| `be3415/data-meta.js` | Modules, materials analysis, gaps, high-yield priorities, a 7-session plan, the cram packet and the readiness checklist |
+| `be3415/data-review.js` | All 71 review-sheet items with the answer key: 53 true statements, 9 multiple choice, 9 written problems, each linked to the topic that explains it |
+| `be3415/data-topics-a/b/c.js` | 32 study topics across the nine modules |
+| `be3415/data-cards.js` | 273 flashcards, generated from the topics |
+| `be3415/data-q-practice.js` | 48 practice questions with per-option explanations, plus 53 held-out true/false items for the mock exams |
+| `be3415/data-problems.js` | Restriction enzymes, two real plasmid maps, and the 8 problems taken from the review sheet and the labs |
+| `be3415/problems.js`, `be3415/gels.js` | Seven problem generators and the SVG drawing for gels, circular maps and linear maps |
+| `be3415/app.js`, `be3415/index.html` | The app: dashboard, exam map, plan, study, review sheet, problems, flashcards, practice, timed exams, weak areas, cram packet |
+
+### Problem practice
+
+The review sets written problems, not just multiple choice. The **Problems** tab drills those:
+
+- **Primer design** - generates a template with a target region, grades both primers, and tells
+  you *which* mistake you made (copied the top strand, reversed without complementing, used the
+  wrong end).
+- **Restriction digests** - which enzyme cuts a sequence, sticky vs blunt, and linear maps.
+- **Plasmid gels** - draws a circular map and a log-scale gel, then checks your band sizes and
+  reminds you that a circle cut *n* times gives *n* fragments, not *n+1*.
+- **Enzyme kinetics** - reaction order, Michaelis-Menten and inhibitor effects.
+
+The eight problems from the review sheet and the labs are included with their own worked answers.
+
+### Regenerating the data
+
+Several data files are generated from compact sources in `be3415/gen/`, so they cannot drift
+from the material they came from:
+
+```bash
+cd be3415
+python3 -I gen/gen_problems.py data-problems.js && python3 -I gen/gen_fixed.py data-problems.js
+python3 -I gen/gen_review.py data-review.js
+BEFILES=data-topics-a.js:data-topics-b.js:data-topics-c.js node gen/gen_cards.js data-cards.js
+```
+
+### Checks
+
+All four suites run from the `be3415/` directory and need no arguments beyond the data list:
+
+```bash
+cd be3415
+BEFILES=data-problems.js:problems.js:gels.js node gen/test.js
+```
+
+```bash
+cd be3415
+BEFILES=$(ls data-*.js | tr '\n' ':') node gen/test-data.js
+```
+
+```bash
+cd be3415
+node gen/smoke.js
+```
+
+```bash
+cd be3415
+node gen/interact.js
+```
+
+`gen/test.js` runs 400 randomized rounds of every problem generator (~12,200 assertions),
+checking among other things that a decoy enzyme never actually appears in the sequence shown
+and that gel bands always sum to the plasmid size. `gen/test-data.js` checks cross-file
+integrity: every question resolves to a real module and topic, each wrong option carries an
+explanation, and no mock-exam item reuses a practice question. `gen/smoke.js` and
+`gen/interact.js` drive the real page in Chromium.
+
+### Accuracy notes
+
+- The plasmid maps are transcribed from the review sheet and the Lab 6 handout. The digest
+  arithmetic reproduces the professor's own answer key exactly (SapI+HpaI gives 1985/3777,
+  SspI+BamHI gives 514/5248), which is how the transcription was verified.
+- The primer answers likewise reproduce his key (`GATAACAATGGCA` / `TGTAGCATTTTTG`).
+- Seven topics have no review coverage at all - metabolic flux, receptor families,
+  transformation, DNA polarity, RNAi, CRISPR and DNA libraries. The review sheet says in its
+  own opening that lecture and lab material outside the handout will appear, so these are
+  flagged throughout as blind spots rather than safe ground.
+- Gel electrophoresis theory and qPCR have no lecture of their own in the uploaded material;
+  both are noted as thin on the Exam map.
 
 ## Biology II Exam 2 study system
 

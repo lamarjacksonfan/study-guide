@@ -6,7 +6,7 @@ const path = require('path');
   const errors = [];
   page.on('console', m => { if (m.type() === 'error') errors.push('console: ' + m.text()); });
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
-  const file = 'file://' + path.resolve('be3415/index.html');
+  const file = 'file://' + path.join(__dirname, '..', 'index.html');
 
   // --- PRIMER DRILL: type the correct answer, expect it to be graded correct
   await page.goto(file + '#prob-primer');
