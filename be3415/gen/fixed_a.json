@@ -1,0 +1,19 @@
+[
+ {"id":"rv-primer","kind":"primer","src":"Review, \"Other questions\" #1",
+  "stem":"Design a 13-nucleotide forward primer and a 13-nucleotide reverse primer that amplify only the highlighted sequence.",
+  "seqFile":"rev_primer.txt","hlFrom":"GATAACAATGGCA","hlTo":"CAAAAATGCTACA","n":13,
+  "teach":"Forward primer = the first 13 nt of the highlighted region, copied as written 5'->3'. Reverse primer = the reverse complement of the last 13 nt. Both are written 5'->3', which is why the reverse one looks backwards compared with the top strand."},
+ {"id":"w11-primer","kind":"primer","src":"Week 11 Lecture 1 slide 37 (in-class exercise)",
+  "stem":"Design a set of primers that will amplify the underlined sequence. Your professor asked for Tm as well: aim for 54-60 C and try to end the 3' end on G or C.",
+  "seqFile":"w11_primer.txt","hlFrom":"GGCCAGACCTTTGAG","hlTo":"TCAGGTTTGGCT","n":18,
+  "teach":"Same rule at any length. The lecture adds two design points: keep both primers within a few degrees of each other in Tm, and prefer a G or C as the final 3' base so the polymerase starts on a stable pair."},
+ {"id":"rv-cuts","kind":"which","src":"Review, \"Other questions\" #6",
+  "stem":"Which of the restriction enzymes in the table could be used to cut this DNA?",
+  "seq":"TACGATGACGAGCATGGATCCAGAGATACGGAACATAAAAT",
+  "choices":["AvrII","BalI","BamHI","BclI","BglII"],"answer":"BamHI",
+  "teach":"Scan the top strand for each 6-base site. GGATCC appears once, at position 15. The near-misses matter: BclI is TGATCA and BglII is AGATCT, so both share the central GATC but differ in the flanking base. Read all six bases before you commit."},
+ {"id":"rv-blunt","kind":"blunt","src":"Review, \"Other questions\" #3",
+  "stem":"Circle the restriction enzyme recognition sequence that will produce blunt ends when cut.",
+  "choices":[["C↓CTAGG","AvrII"],["TGG↓CCA","BalI"]],"answer":"BalI",
+  "teach":"The cut arrow sits dead centre of TGGCCA (3 bases each side), so both strands break at the same point: blunt. C↓CTAGG is cut after 1 base, leaving a 4-base 5' overhang: sticky."}
+]

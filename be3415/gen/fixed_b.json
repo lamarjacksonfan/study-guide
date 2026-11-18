@@ -1,0 +1,23 @@
+[
+ {"id":"rv-2kb","kind":"linmap","src":"Review, \"Other questions\" #7",
+  "stem":"A reaction using which restriction enzymes would cut this DNA yielding a 2 kb fragment?",
+  "labels":["PstI","EcoRI","BalI","BamHI","BclI","BglII","PstI"],
+  "gaps":[500,1000,1200,1000,800,200],"answer":["PstI","BamHI"],
+  "teach":"Mark the cut positions first: PstI 0, EcoRI 500, BalI 1500, BamHI 2700, BclI 3700, BglII 4500, PstI 4700. Then look for a pair 2000 apart. BamHI at 2700 and the right-hand PstI at 4700 differ by exactly 2000, so that pair releases the 2 kb piece (the other piece is 2700). Watch the trap: PstI appears twice on this map."},
+ {"id":"rv-gel","kind":"gel","src":"Review, \"Other questions\" #9 (last page)",
+  "stem":"Draw the expected bands after cutting the plasmid with the enzymes above each well, and write the expected size of each band.",
+  "plasmid":"plic","ladder":[6000,5000,4000,3000,2000,1000,500],
+  "lanes":[["SapI"],["HpaI","SapI"],["SspI","BamHI"],["SspI"]],
+  "teach":"A circular plasmid cut n times gives n fragments, not n+1. One cut therefore gives a single full-length linear band at 5762 bp, which is why the SapI and SspI lanes each show one band near the top. For two cuts, subtract the positions for one fragment and take total minus that for the other."},
+ {"id":"lab6-amp","kind":"gel","src":"Lab 6 post-lab question 2",
+  "stem":"After cutting the pET22b vector with NotI and XbaI and running it on a gel, which fragment carries the ampicillin resistance gene?",
+  "plasmid":"pet","ladder":[10000,8000,6000,5000,4000,3000,2000,1000],
+  "lanes":[["NotI","XbaI"]],
+  "answerNote":"Two bands: 3248 bp and 5329 bp. AmpR sits at about 900 bp on the map, which lies in the stretch running from NotI (8407) through the origin to XbaI (5159), so the <b>larger 5329 bp fragment</b> carries it.",
+  "teach":"Position beats intuition here. Find the gene's coordinate on the map, then ask which of the two arcs contains it. The arc from 8407 forward past 0 to 5159 passes through 900, so AmpR travels with the big fragment."},
+ {"id":"lab6-gfp","kind":"design","src":"Lab 6 post-lab question 5",
+  "stem":"Define a set of restriction enzymes that would release a small fragment containing the complete superfolder GFP gene from the pET22b vector.",
+  "plasmid":"pet","feature":[5330,5990,"superfolder GFP"],
+  "answer":["XbaI","SacI"],
+  "teach":"You need one unique cutter on each side of the gene and nothing cutting inside it. XbaI at 5159 sits just before the gene and SacI at 6007 just after, giving an 848 bp fragment that holds the whole coding sequence. Eco53kI (6005) is an equally good right-hand choice; MscI at 5471 is not, because it cuts inside the gene."}
+]
