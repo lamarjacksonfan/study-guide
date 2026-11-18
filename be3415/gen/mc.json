@@ -1,0 +1,92 @@
+[
+{
+"q": "Enzymatic activity has an optimum temperature because",
+"opts": [
+"the component amino acids have varying melting points",
+"the rate of reactions is thermodynamically controlled",
+"the side chains of essential residues are chemically degraded at higher temperatures",
+"raising the temperature speeds up the reaction until protein denaturation sets in"
+],
+"ans": 3
+},
+{
+"q": "In the reaction catalyzed by aspartate transcarbamoylase, a graph in which the rate is plotted against the concentration of substrate",
+"opts": [
+"is sigmoidal, characteristic of an allosteric enzyme",
+"shows that noncooperative kinetics are observed",
+"shows that the reaction is zero order",
+"is hyperbolic, characteristic of a nonallosteric enzyme"
+],
+"ans": 0
+},
+{
+"q": "When the substrate concentration is low, an enzyme reaction",
+"opts": [
+"will display zero-order kinetics.",
+"will display first-order kinetics.",
+"will display second-order kinetics.",
+"will denature and cease to function."
+],
+"ans": 1
+},
+{
+"q": "When an enzyme is saturated with substrates,",
+"opts": [
+"it will display zero-order kinetics.",
+"it will display first-order kinetics.",
+"it will display second-order kinetics.",
+"it will denature and cease to function."
+],
+"ans": 0
+},
+{
+"q": "The Michaelis constant is",
+"opts": [
+"related to the molecular weight of the enzyme",
+"a measure of the resistance of the enzyme to denaturation",
+"a reflection of the percentage of polar amino acids in the enzyme",
+"a measure of how tightly the substrate is bound to the enzyme"
+],
+"ans": 3
+},
+{
+"q": "The KM expression is equal to",
+"opts": [
+"(k1 + k2) / k−1",
+"(k−1 + k2) / k1",
+"(k1 + k−1) / k2",
+"k−1 / k1"
+],
+"ans": 1
+},
+{
+"q": "The substrate-enzyme (E-S) complex",
+"opts": [
+"always proceeds to form the products rapidly.",
+"always breaks down to form free enzyme and substrate.",
+"always breaks down to form free enzyme and product.",
+"may break down to form free enzyme and substrate, or free enzyme and product."
+],
+"ans": 3
+},
+{
+"q": "Irreversible inhibitors of enzymatic reactions",
+"opts": [
+"bind to the enzyme only at low temperatures.",
+"affect only serine side chains.",
+"react with the enzyme to produce a protein that is not enzymatically active and from which the original enzyme cannot be regenerated.",
+"are bound to the enzyme by the lock-and-key mechanism."
+],
+"ans": 2
+},
+{
+"q": "A noncompetitive inhibitor",
+"opts": [
+"binds to the enzyme at a site other than the active site",
+"is structurally related to the substrate",
+"does not affect the value of Vmax",
+"decreases the value of KM"
+],
+"ans": 0
+}
+]

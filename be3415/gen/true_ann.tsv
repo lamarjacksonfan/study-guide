@@ -1,0 +1,53 @@
+1	rec	The binding site is a hollow or cleft on the surface. Swap-trap: an active site does chemistry, a binding site does not.
+2	rec	Two things in one sentence: the bonds are intermolecular (non-covalent) and the result is induced fit, not lock-and-key.
+3	rec	Signal transduction is the downstream domino effect. The signal gets inside the cell; the ligand itself does not have to.
+4	rec	Binding is reversible and the ligand leaves unchanged. A statement saying it is permanently bound or chemically altered is false.
+5	forces	Individually weak, collectively strong. Watch for a flipped version saying they are individually strong.
+6	forces	Specifically induced dipole - induced dipole (van der Waals) in hydrophobic regions, maximized by surface complementarity.
+7	forces	Water can bridge an H-bond that would otherwise be out of reach. It is not always a spectator.
+8	forces	Solvation and desolvation regulate affinity. Expect this as a fill-in or true/false.
+9	forces	Releasing ordered water from a hydrophobic interface is an ENTROPY gain. If a choice credits enthalpy only, it is wrong.
+10	forces	Memorize the three consequences in order: false positives for sensors, high background for imaging, side effects for drugs.
+11	ab	Antibody = immunoglobulin. One word, easy point.
+12	iso	Five classes: IgG, IgM, IgA, IgD, IgE. Remember GAMED. A sixth invented class is the usual distractor.
+13	ab	Antigen binding is set by the VARIABLE region sequence. Constant-region is the swap-trap.
+14	ab	Two functions: bind antigen, and recruit effector cells. The second one is the Fc tail.
+15	ab	Variability is concentrated in the CDRs, not spread evenly. CDR = complementarity determining region.
+16	vec	Circular, replicates in a host, transferable. The parenthesis is the real point: it only replicates if its ori suits that host.
+17	vec	Shuttle = works in TWO organisms. Grow it in bacteria, use it in yeast or human cells.
+18	vec	Cloning vector: purpose is copies of the DNA. Nothing about making protein.
+19	vec	Expression vector: makes mRNA, so it needs a promoter to start and a terminator to stop. Promoter/terminator swap is the classic trap.
+20	rna	RNA synthesis starts at the END of the promoter, which sits 5' of the gene. The promoter is not transcribed itself.
+21	rna	Elongation runs until the terminator, where polymerase releases both the RNA and the DNA template.
+22	rna	Regulatory sequences plus the proteins that bind them switch genes on or off. True in both prokaryotes and eukaryotes.
+23	lac	Three genes; lacZ makes beta-galactosidase; it hydrolyses lactose into glucose + galactose. Know which product is which.
+24	lac	The four-way table. ON only when glucose is ABSENT and lactose is PRESENT. The other three give little to no enzyme.
+25	rep	Proofreading removes the wrong base immediately after it is added. More accurate but slower.
+26	rep	Chromosome level: deletion, inversion, translocation, duplication. Gene level adds substitution and frameshift, so a question mixing the two lists is a trap.
+27	pcr	Taq survives the ~94 C denaturation step. That is the whole reason it is used.
+28	pcr	Accept the professor's wording. In practice most qPCR uses a dye or a labelled probe; the key idea is fluorescence read every cycle, and an earlier Ct means more starting template.
+29	clone	MCS = many restriction sites clustered in one place, so you get a choice of enzymes.
+30	clone	WHITE = recombinant (insert disrupted lacZ, no beta-gal, X-Gal stays colourless). Blue = empty vector. Getting this backwards is the single most common error here.
+31	clone	Directional cloning needs TWO DIFFERENT enzymes used on both vector and insert, so the insert can only drop in one way round.
+32	vec	Three parts required: promoter, ribosome binding site, terminator. And it must be cDNA, because E. coli cannot splice out introns.
+33	phage	Billions of peptides displayed on phage, then screened for affinity or activity. This is the setup for panning.
+34	chem	Chemical genetics = using a small molecule to change what one gene product does.
+35	chem	FORWARD = phenotype first, then find the protein. Goal: target IDENTIFICATION.
+36	chem	REVERSE = protein first, then find compounds that bind it. Goal: target function and VALIDATION. Forward/reverse swap is a guaranteed trap.
+37	chrom	Epigenetics changes expression without changing sequence, and can persist across generations.
+38	chrom	Histones are positively charged; acetylation lowers that charge and loosens the DNA grip.
+39	chrom	A nucleosome is DNA around 2 copies each of 4 histones. The OCTAMER is the core as a whole, not a single histone, despite the review's wording.
+40	chrom	Euchromatin is loose, so RNA polymerase can get in and transcribe.
+41	chrom	Heterochromatin is tightly wrapped and inactive. Euchromatin/heterochromatin swap is a frequent trap.
+42	chrom	Most of the genome sits in heterochromatin. Counter-intuitive, so it gets asked.
+43	chrom	Post-translational modification of histone TAILS sets the packing state.
+44	chrom	About 30 amino acids, N-terminal, unstructured, heavily modified, and a docking signal for other proteins.
+45	meth	Methylation does two things: blocks transcription factors AND recruits MBD proteins. Expect a question that only credits one.
+46	meth	Methylation lets the environment tune expression fast, without permanent mutation. This is the agouti mouse and royal jelly story.
+47	meth	CpG dinucleotides, cytosine methylated on BOTH strands, as 5-methylcytosine. Enzyme is DNMT, methyl donor is SAM.
+48	chrom	HAT ADDS acetyl, loosens DNA, ACTIVATES. Say it as: HAT adds, so the gene is on.
+49	chrom	HDAC REMOVES acetyl, restores positive charge, tightens, REPRESSES. HAT/HDAC reversal is the most likely epigenetics trap on the exam.
+50	phage	Viruses are called non-living because they have no independent metabolism, yet they still evolve and replicate inside hosts.
+51	phage	M13 is filamentous and NON-LYTIC: it slows the cell but does not kill it. That is why phage display works.
+52	meteng	Adding genes can change a target phenotype. Pairs with the six strategies short answer.
+53	meteng	Selection kills what you do not want; screening lets everything grow and you look. Both are used to find improved mutants.

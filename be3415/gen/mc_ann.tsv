@@ -1,0 +1,9 @@
+1	enz	Rate climbs with temperature right up until the protein denatures. C is the tempting wrong answer: side chains are not what degrades first, the fold is.
+2	allo	ATCase is the lecture's allosteric example, so the curve is SIGMOIDAL. Hyperbolic (D) is the non-allosteric Michaelis-Menten shape. Sigmoid means cooperative subunits.
+3	order	Low [S]: most enzyme is free, so rate rises in proportion to substrate. v is proportional to [S] = FIRST order.
+4	order	Saturated: every active site is occupied, adding substrate changes nothing. Rate is constant = ZERO order, v is approximately Vmax. This is the mirror of the previous question, and they are often asked together.
+5	mm	Among these choices, D is right: Km reflects how tightly substrate is bound. Strictly Km equals the dissociation constant only when k2 is much smaller than k-1. Low Km = high apparent affinity.
+6	mm	Km = (k-1 + k2) / k1. The numerator holds both ways the ES complex is LOST (back to E+S, or forward to product); the denominator is the rate of forming it. Option A inverts the subscripts.
+7	mm	ES has two fates: back to E + S, or forward to E + P. Any option with the word "always" is wrong, which is a useful shortcut here.
+8	inh	Irreversible means a covalent change that cannot be undone: the original enzyme cannot be regenerated. Lock-and-key (D) describes normal substrate binding, not inhibition.
+9	inh	Noncompetitive binds AWAY from the active site. It lowers Vmax and leaves Km unchanged, so C and D are wrong; B describes a competitive inhibitor.
